@@ -6,5 +6,5 @@ get '/' do
 end
 
 get '/send_tweet' do
-   Tweet.new.send_tweet
+   'Closed'
 end
