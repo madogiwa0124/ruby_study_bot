@@ -23,7 +23,19 @@ class Tweet
 
   # ツイート本文の生成
   def create_text
-    @text = 'sinatraで投稿テスト'
+    # 主要クラスを定義
+    class_list = [String, Integer, Array, Hash]
+    # 主要クラスから対象となるクラスをランダムに抽出
+    target_class = class_list.sample
+    # 対象クラスからメソッドをランダムに抽出
+    method = target_class.methods.sample
+    # 投稿内容の作成
+    @text = <<-END
+      rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
+      Class  : #{ target_class }
+      Method : #{ method }
+      Manual : https://docs.ruby-lang.org/ja/2.3.0/class/#{target_class}.html
+    END
   end
 
   private
