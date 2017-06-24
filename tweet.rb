@@ -28,7 +28,7 @@ class Tweet
     # 主要クラスから対象となるクラスをランダムに抽出
     target_class = class_list.sample
     # 対象クラスからメソッドをランダムに抽出
-    method = target_class.methods(false).sample
+    method = target_class.instance_methods.sample
     # 投稿内容の作成
     @text = <<-END
       rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
