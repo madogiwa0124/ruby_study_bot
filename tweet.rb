@@ -1,3 +1,4 @@
+require 'date'
 require 'twitter'
 require 'dotenv/load'
 
@@ -17,12 +18,23 @@ class Tweet
 
   # Tweetの投稿処理呼び出し
   def send_tweet
-    tweet = create_text
-    update(tweet)
+    create_text
+    update
   end
 
   # ツイート本文の生成
   def create_text
+    if DateTime.now.hour == 8
+      create_week_text
+    else
+      create_class_method_text
+    end
+  end
+
+  private
+
+  # クラスとメソッド、rubyリファレンスマニュアルへのリンクを生成
+  def create_class_method_text
     # 主要クラスを定義
     class_list = [String, Integer, Array, Hash]
     # 主要クラスから対象となるクラスをランダムに抽出
@@ -40,12 +52,24 @@ class Tweet
     END
   end
 
-  private
+  # 曜日毎のメッセージを設定
+  def create_week_text
+    week = Date.today.wday
+    @text = case week
+    when 0 then "にっこりにちようび〜、週の終わりまで勉強がんばってえらい！(o・ω・o)"
+    when 1 then "げつげつげつようび〜、週初めから勉強頑張ってえらい！(o・ω・o)"
+    when 2 then "かっかっかようび〜、やる気も燃え上がるー(｀・ω・´)！"
+    when 3 then "すいすいすいようび〜、勉強もすいすい進むよ〜(・ω・ 　⊃ 　)⊃≡"
+    when 4 then "もくもくもくようび〜、もくもく勉強だー！φ(..)"
+    when 5 then "きんきんきんようび〜、明日から休み、がんばろー(/･ω･)/"
+    when 6 then "どっどっどようび〜、どんどん勉強を進めていこーφ(..)"
+    end
+  end
 
   # Tweet投稿処理
-  def update(tweet)
+  def update
     begin 
-      @client.update(tweet)
+      @client.update(@text)
     rescue => e
       p e # エラー時はログを出力
     end
