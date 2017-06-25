@@ -25,8 +25,11 @@ class Tweet
   # ツイート本文の生成
   def create_text
     if DateTime.now.hour == 8
+      # AM8:00は、曜日毎のメッセージを投稿
+      # 投稿を1時間毎から変更する場合は条件を修正する必要あり
       create_week_text
     else
+      # クラス、メソッド、リファレンスマニュアルのページを投稿
       create_class_method_text
     end
   end
