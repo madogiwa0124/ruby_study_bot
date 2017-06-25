@@ -28,13 +28,15 @@ class Tweet
     # 主要クラスから対象となるクラスをランダムに抽出
     target_class = class_list.sample
     # 対象クラスから基底クラスのメソッド以外を抽出
-    method = target_class.instance_methods - Object.instance_methods
+    method = (target_class.instance_methods - Object.instance_methods).sample
+    # メソッドへのリンクにしようされているIDを生成
+    id = "#I_#{method.to_s.upcase.gsub('?','--3F')}"
     # 投稿内容の作成
     @text = <<-END
       rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
       Class  : #{ target_class }
-      Method : #{ method.sample }
-      Manual : https://docs.ruby-lang.org/ja/2.3.0/class/#{target_class}.html
+      Method : #{ method }
+      Manual : https://docs.ruby-lang.org/ja/2.3.0/class/#{target_class}.html#{id}
     END
   end
 
