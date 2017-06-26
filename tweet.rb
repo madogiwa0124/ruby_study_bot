@@ -39,19 +39,19 @@ class Tweet
   # クラスとメソッド、rubyリファレンスマニュアルへのリンクを生成
   def create_class_method_text
     # 主要クラスを定義
-    class_list = [String, Integer, Array, Hash]
+    class_list = [String, Numelic, Array, Hash]
     # 主要クラスから対象となるクラスをランダムに抽出
     target_class = class_list.sample
     # 対象クラスから基底クラスのメソッド以外を抽出
     method = (target_class.instance_methods - Object.instance_methods).sample
     # メソッドへのリンクにしようされているIDを生成
-    id = "#I_#{method.to_s.upcase.gsub('?','--3F')}"
+    id = "#I_#{method.to_s.upcase.gsub('?','--3F').('=','--3D')}"
     # 投稿内容の作成
     @text = <<-END
-      rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
-      Class  : #{ target_class }
-      Method : #{ method }
-      Manual : https://docs.ruby-lang.org/ja/2.3.0/class/#{target_class}.html#{id}
+    rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
+    Class  : #{ target_class }
+    Method : #{ method }
+    Manual : https://docs.ruby-lang.org/ja/2.3.0/class/#{target_class}.html#{id}
     END
   end
 
