@@ -39,7 +39,7 @@ class Tweet
   # クラスとメソッド、rubyリファレンスマニュアルへのリンクを生成
   def create_class_method_text
     # 主要クラスを定義
-    class_list = [String, Numelic, Array, Hash]
+    class_list = [String, Numeric, Array, Hash]
     # 主要クラスから対象となるクラスをランダムに抽出
     target_class = class_list.sample
     # 対象クラスから基底クラスのメソッド以外を抽出
