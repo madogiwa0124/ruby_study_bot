@@ -17,6 +17,13 @@ rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
 ```
  木曜日：もくもくもくようび〜、もくもく勉強だー！φ(..)
 ```
+* rubyのクラスを聞かれたら、rubyリファレンスマニュアルのページを返すリプライ対応
+```
+@ruby_study_bot String
+「Array」ですね！(o・ω・o)
+マニュアルのページはこちらです！φ(..)
+https://docs.ruby-lang.org/ja/2.3.0/class/Array.html
+```
 
 # 今後追加したい機能
 * rubyにまつわる知識や雑学を投稿する機能
@@ -27,12 +34,7 @@ Rubyの外観はシンプルです。けれど、内側はとても複雑なの�
 それはちょうど私たちの身体と同じようなものです。
 https://www.ruby-lang.org/ja/about/
 ```
-* rubyのクラスを聞かれたら、rubyリファレンスマニュアルのページを返すリプライ対応
-```
-@ruby_study_bot String
-@user Stringのマニュアルはこちらです(o・ω・o)
-https://docs.ruby-lang.org/ja/2.3.0/class/String.html
-```
+
 * はてなブログ等でrubyにまつわる内容が投稿されたらツイートで共有
 ```
 はてなブログに「ruby:Rubocopの使い方と警告について」が投稿されました！
