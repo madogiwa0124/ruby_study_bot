@@ -45,7 +45,8 @@ class Tweet
     # 対象クラスから基底クラスのメソッド以外を抽出
     method = (target_class.instance_methods - Object.instance_methods).sample
     # メソッドへのリンクにしようされているIDを生成
-    id = "#I_#{method.to_s.upcase.gsub('?','--3F').gsub('=','--3D')}"
+    id = method.to_s.upcase.gsub('?','--3F').gsub('=','--3D').gsub('<','--3C').gsub('>','--3E')
+    id = "#I_#{id}"
     # 投稿内容の作成
     @text = <<-END
     rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
