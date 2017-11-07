@@ -3,9 +3,9 @@ require 'twitter'
 require 'tweetstream'
 require 'dotenv/load'
 # 定数宣言
-RUBY_VERSION = "2.3.0"
+RUBY_VERSION = "2.4.0"
 MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
-CLASS_LIST = [String, Numeric, Array, Hash]
+CLASS_LIST = [String, Numeric, Array, Hash, IO]
 
 class Tweet
     # clientとtimelineは公開
