@@ -40,3 +40,8 @@ https://www.ruby-lang.org/ja/about/
 はてなブログに「ruby:Rubocopの使い方と警告について」が投稿されました！
 http://madogiwa0124.hatenablog.com/entry/2017/06/22/233036
 ```
+
+# リリースノート
+### 2017/11/08 
+* 呟くRubyリファレンスマニュアルを`2.4.0`にバージョンアップしました。
+* 呟く対象のクラスに`IOクラス`を追加しました。
