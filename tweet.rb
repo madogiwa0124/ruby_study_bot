@@ -77,16 +77,6 @@ class Tweet
     END
   end
   
-  def get_ruby_manul
-
-  end
-
-  def get_ruby_class
-  end
-
-  def get_ruby_method
-  end
-
   def url_encode_text(text)
     text
     .gsub('?','--3F')
