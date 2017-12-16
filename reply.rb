@@ -1,21 +1,34 @@
 require_relative 'tweet.rb'
+require_relative 'ruby_manual.rb'
 
 # クライアントの生成
 tweet_bot = Tweet.new
 
 # Class名からマニュアルページのリンクテキストを生成
-def create_class_reply_text(content)
-  url = case content
-  when CLASS_LIST[0].to_s then MANUAL_URL + "#{CLASS_LIST[0].to_s}.html"
-  when CLASS_LIST[1].to_s then MANUAL_URL + "#{CLASS_LIST[1].to_s}.html"
-  when CLASS_LIST[2].to_s then MANUAL_URL + "#{CLASS_LIST[2].to_s}.html"
-  when CLASS_LIST[3].to_s then MANUAL_URL + "#{CLASS_LIST[3].to_s}.html"
+def create_class_reply_text(target_class)
+  url = get_manual_url(target_class)
+  if url
+    text = <<-END
+    「#{target_class}」ですね！(o・ω・o)
+    マニュアルのページはこちらです！φ(..)
+    #{url}
+    END
+  else
+    text = "すいません、わかりません。。。"
   end
-  text = <<-END
-  「#{content}」ですね！(o・ω・o)
-  マニュアルのページはこちらです！φ(..)
-  #{url}
-  END
+  text
+end
+
+def get_manual_url(target_class)
+  class_list = RubyReferenceManual.new.class_list
+  url = case target_class
+  when class_list[1].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[1].to_s}.html"
+  when class_list[2].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[2].to_s}.html"
+  when class_list[3].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[3].to_s}.html"
+  when class_list[4].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[4].to_s}.html"
+  else nil 
+  end
+  url
 end
 
 begin 
@@ -33,12 +46,7 @@ begin
         # contentからアカウントとスペース部分を削除
         content = content.gsub("@ruby_study_bot","").gsub(" ","")
         # 定義したクラス名に一致する場合
-        if CLASS_LIST.map{ |c| c.to_s }.index(content)
-          # reply用のテキストを生成
-          text = create_class_reply_text(content)
-        else
-          text = "すいません、わかりません。。。"
-        end
+        text = create_class_reply_text(content)
         # reply処理の呼び出し
         tweet_bot.reply(text, twitter_id, status_id)
       end
