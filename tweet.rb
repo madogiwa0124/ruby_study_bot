@@ -2,6 +2,8 @@ require 'date'
 require 'twitter'
 require 'tweetstream'
 require 'dotenv/load'
+require 'open-uri'
+
 # 定数宣言
 RUBY_VERSION = "2.4.0"
 MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
@@ -33,8 +35,8 @@ class Tweet
 
   # Tweetの投稿処理呼び出し
   def send_tweet
-    create_text
-    update
+    p create_text
+    # update
   end
 
   # replyの投稿処理呼び出し
@@ -64,8 +66,8 @@ class Tweet
     # 対象クラスから基底クラスのメソッド以外を抽出
     method = (target_class.instance_methods - Object.instance_methods).sample
     # メソッドへのリンクにしようされているIDを生成
-    id = method.to_s.upcase.gsub('?','--3F').gsub('=','--3D').gsub('<','--3C').gsub('>','--3E')
-    id = "#I_#{id}"
+    id = method.to_s.upcase
+    id = "#I_#{url_encode_text(id)}"
     # 投稿内容の作成
     @text = <<-END
     rubyのメソッド、調べて勉強φ(..)！(ver#{ RUBY_VERSION })
@@ -73,6 +75,27 @@ class Tweet
     Method : #{ method }
     Manual :#{MANUAL_URL}#{target_class}.html#{id}
     END
+  end
+  
+  def get_ruby_manul
+
+  end
+
+  def get_ruby_class
+  end
+
+  def get_ruby_method
+  end
+
+  def url_encode_text(text)
+    text
+    .gsub('?','--3F')
+    .gsub('=','--3D')
+    .gsub('<','--3C')
+    .gsub('>','--3E')
+    .gsub('!','--21')
+    .gsub('%','--25')
+    .gsub('@','--40')
   end
 
   # 曜日毎のメッセージを設定
