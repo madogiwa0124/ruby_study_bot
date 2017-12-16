@@ -22,6 +22,7 @@ end
 def get_manual_url(target_class)
   class_list = RubyReferenceManual.new.class_list
   url = case target_class
+  when class_list[0].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[0].to_s}.html"
   when class_list[1].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[1].to_s}.html"
   when class_list[2].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[2].to_s}.html"
   when class_list[3].to_s then RubyReferenceManual::MANUAL_URL + "#{class_list[3].to_s}.html"
