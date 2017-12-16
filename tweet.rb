@@ -30,8 +30,8 @@ class Tweet
 
   # Tweetの投稿処理呼び出し
   def send_tweet
-    p create_text
-    # update
+    create_text
+    update
   end
 
   # replyの投稿処理呼び出し
@@ -82,6 +82,11 @@ class Tweet
     .gsub('!','--21')
     .gsub('%','--25')
     .gsub('@','--40')
+    .gsub('[','--5b')
+    .gsub(']','--5d')
+    .gsub('~','--7e')
+    .gsub('*','--2a')
+    .gsub('+','--2b')
   end
 
   # 曜日毎のメッセージを設定
