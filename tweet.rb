@@ -2,12 +2,7 @@ require 'date'
 require 'twitter'
 require 'tweetstream'
 require 'dotenv/load'
-require 'open-uri'
-
-# 定数宣言
-RUBY_VERSION = "2.4.0"
-MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
-CLASS_LIST = [String, Numeric, Array, Hash, IO]
+require_relative 'ruby_manual.rb'
 
 class Tweet
     # clientとtimelineは公開
@@ -61,22 +56,23 @@ class Tweet
 
   # クラスとメソッド、rubyリファレンスマニュアルへのリンクを生成
   def create_class_method_text
+    ruby_manual = RubyReferenceManual.new
     # 主要クラスから対象となるクラスをランダムに抽出
-    target_class = CLASS_LIST.sample
+    target_class = ruby_manual.class_list.sample
     # 対象クラスから基底クラスのメソッド以外を抽出
-    method = (target_class.instance_methods - Object.instance_methods).sample
+    method = ruby_manual.method_list(target_class).sample
     # メソッドへのリンクにしようされているIDを生成
-    id = method.to_s.upcase
-    id = "#I_#{url_encode_text(id)}"
+    id = url_encode_text(method.to_s.upcase)
+    id = "#I_#{id}"
     # 投稿内容の作成
     @text = <<-END
-    rubyのメソッド、調べて勉強φ(..)！(ver#{ RUBY_VERSION })
+    rubyのメソッド、調べて勉強φ(..)！(ver#{ RubyReferenceManual::RUBY_VERSION })
     Class  : #{ target_class }
     Method : #{ method }
-    Manual :#{MANUAL_URL}#{target_class}.html#{id}
+    Manual :#{RubyReferenceManual::MANUAL_URL}#{target_class}.html#{id}
     END
   end
-  
+
   def url_encode_text(text)
     text
     .gsub('?','--3F')

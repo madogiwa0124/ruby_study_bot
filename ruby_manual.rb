@@ -2,6 +2,9 @@ require 'open-uri'
 require 'nokogiri'
 
 class RubyReferenceManual
+
+  attr_reader :class_list
+
   RUBY_VERSION = "2.4.0"
   MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
   CLASS_LIST = [String, Numeric, Array, Hash, IO]
@@ -32,7 +35,7 @@ class RubyReferenceManual
     methods -= methods.grep(/[^\x01-\x7E]/)
     # 正規表現で判定出来ないため苦肉の策でbase64は直接削除
     methods.delete('base64')
-    p methods
+    methods
   end
 
   def get_page_parsed_object(url)
@@ -45,5 +48,3 @@ class RubyReferenceManual
     doc
   end
 end
-
-RubyReferenceManual.new.method_list(Numeric)
