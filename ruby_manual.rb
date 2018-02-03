@@ -5,7 +5,7 @@ class RubyReferenceManual
 
   attr_reader :class_list
 
-  RUBY_VERSION = "2.4.0"
+  RUBY_VERSION = "2.5.0"
   MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
   CLASS_LIST = [String, Numeric, Array, Hash, IO]
 
