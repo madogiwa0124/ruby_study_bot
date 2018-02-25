@@ -3,6 +3,7 @@ require 'twitter'
 require 'tweetstream'
 require 'dotenv/load'
 require_relative 'ruby_manual.rb'
+require_relative 'ruby_magazine.rb'
 
 class Tweet
     # clientとtimelineは公開
@@ -42,10 +43,12 @@ class Tweet
 
   # ツイート本文の生成
   def create_text
-    if DateTime.now.hour == 8
+    if DateTime.now.hour == 7
       # AM8:00は、曜日毎のメッセージを投稿
       # 投稿を1時間毎から変更する場合は条件を修正する必要あり
       create_week_text
+    elsif DateTime.now.hour == 8
+      create_ruby_magazine_text
     else
       # クラス、メソッド、リファレンスマニュアルのページを投稿
       create_class_method_text
@@ -53,6 +56,16 @@ class Tweet
   end
 
   private
+
+  def create_ruby_magazine_text
+    ruby_magazine = RubyMagazine.new
+    ruby_magazine = ruby_magazine.get_magazine_page
+    @text = <<-END
+    本日のるびま(RubyistMagazine)のバックナンバーですφ(..)
+    タイトル:#{ruby_magazine[:title]}
+    URL:#{ruby_magazine[:url]}
+    END
+  end
 
   # クラスとメソッド、rubyリファレンスマニュアルへのリンクを生成
   def create_class_method_text
