@@ -44,10 +44,12 @@ class Tweet
   # ツイート本文の生成
   def create_text
     if DateTime.now.hour == 7
-      # AM8:00は、曜日毎のメッセージを投稿
+      # AM7:00は、曜日毎のメッセージを投稿
       # 投稿を1時間毎から変更する場合は条件を修正する必要あり
       create_week_text
     elsif DateTime.now.hour == 8
+      # AM8:00は、るびまのバックナンバーを投稿
+      # 投稿を1時間毎から変更する場合は条件を修正する必要あり
       create_ruby_magazine_text
     else
       # クラス、メソッド、リファレンスマニュアルのページを投稿
@@ -57,6 +59,7 @@ class Tweet
 
   private
 
+  # るびまのバックナンバーのタイトルとURLを生成
   def create_ruby_magazine_text
     ruby_magazine = RubyMagazine.new
     ruby_magazine = ruby_magazine.get_magazine_page
