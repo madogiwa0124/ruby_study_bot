@@ -1,13 +1,12 @@
 require 'date'
 require 'twitter'
-require 'tweetstream'
 require 'dotenv/load'
 require_relative 'ruby_manual.rb'
 require_relative 'ruby_magazine.rb'
 
 class Tweet
     # clientとtimelineは公開
-    attr_accessor :client, :timeline
+    attr_accessor :client
   def initialize
     # 投稿内容の初期化
     @text = ""
@@ -18,27 +17,12 @@ class Tweet
       config.access_token        = ENV['ACCESS_TOKEN']
       config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
     end
-    # TweetStreamの生成
-    TweetStream.configure do |config|
-      config.consumer_key        = ENV['CONSUMER_KEY']
-      config.consumer_secret     = ENV['CONSUMER_SECRET']
-      config.oauth_token         = ENV['ACCESS_TOKEN']
-      config.oauth_token_secret  = ENV['ACCESS_TOKEN_SECRET']
-      config.auth_method         = :oauth      
-    end
-    @timeline = TweetStream::Client.new
   end
 
   # Tweetの投稿処理呼び出し
   def send_tweet
     create_text
     update
-  end
-
-  # replyの投稿処理呼び出し
-  def reply(text = "", twitter_id = nil, status_id = nil)
-    rep_text = "@#{twitter_id} #{text}"
-    update_rply(rep_text, status_id)
   end
 
   # ツイート本文の生成
@@ -121,17 +105,8 @@ class Tweet
 
   # Tweet投稿処理
   def update
-    begin 
+    begin
       @client.update(@text)
-    rescue => e
-      p e # エラー時はログを出力
-    end
-  end
-
-  # reply投稿処理
-  def update_rply(rep_text, status_id)
-    begin 
-      @client.update(rep_text, {in_reply_to_status_id: status_id})
     rescue => e
       p e # エラー時はログを出力
     end
