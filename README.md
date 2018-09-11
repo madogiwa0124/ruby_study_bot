@@ -23,13 +23,6 @@ rubyのメソッド、調べて勉強φ(..)！(ver2.3.0)
  タイトル:0013号(発行: 2006 2/20)
  URL:http://magazine.rubyist.net/?0013
 ```
-* rubyのクラスを聞かれたら、rubyリファレンスマニュアルのページを返すリプライ対応
-```
-@ruby_study_bot String
-「Array」ですね！(o・ω・o)
-マニュアルのページはこちらです！φ(..)
-https://docs.ruby-lang.org/ja/2.3.0/class/Array.html
-```
 
 # 今後追加したい機能
 * rubyにまつわる知識や雑学を投稿する機能
