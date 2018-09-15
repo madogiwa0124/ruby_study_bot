@@ -1,4 +1,4 @@
-require_relative 'tweet'
+require_relative 'lib/tweet'
 require 'dotenv/load'
 require 'date'
 
