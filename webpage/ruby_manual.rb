@@ -1,7 +1,6 @@
-class RubyReferenceManual
-  require 'open-uri'
-  require 'nokogiri'
+require_relative 'web_page_base'
 
+class RubyReferenceManual < WebPageBase
   RUBY_VERSION = "2.5.0"
   MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
   CLASS_LIST = [String, Numeric, Array, Hash, IO]
@@ -42,31 +41,6 @@ class RubyReferenceManual
       end
       url = "#{MANUAL_URL}/#{target_class}.html"
       page_parsed_object(url)
-    end
-
-    def page_parsed_object(url)
-      charset = nil
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-      Nokogiri::HTML.parse(html, nil, charset)
-    end
-
-    def url_encode_text(text)
-      text
-      .gsub('?','--3F')
-      .gsub('=','--3D')
-      .gsub('<','--3C')
-      .gsub('>','--3E')
-      .gsub('!','--21')
-      .gsub('%','--25')
-      .gsub('@','--40')
-      .gsub('[','--5b')
-      .gsub(']','--5d')
-      .gsub('~','--7e')
-      .gsub('*','--2a')
-      .gsub('+','--2b')
     end
   end
 end
