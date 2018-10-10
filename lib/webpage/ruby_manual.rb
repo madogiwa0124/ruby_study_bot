@@ -3,7 +3,7 @@ require_relative 'web_page_base'
 class RubyReferenceManual < WebPageBase
   RUBY_VERSION = "2.5.0"
   MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
-  CLASS_LIST = [String, Numeric, Array, Hash, IO]
+  CLASS_LIST = [String, Numeric, Array, Hash, IO, Range, Regexp, ]
 
   class << self
     def sample_target
