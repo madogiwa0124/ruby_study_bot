@@ -1,5 +1,5 @@
 # ruby_study_bot
-Twitterの[@ruby_study_bot](https://twitter.com/ruby_study_bot)のリポジトリです。  
+Twitterの[@ruby_study_bot](https://twitter.com/ruby_study_bot)のリポジトリです。
 herokuで運用してます。heroku schedulerを使って1時間に一回つぶやきを投稿してます。
 
 # 機能
@@ -41,10 +41,12 @@ http://madogiwa0124.hatenablog.com/entry/2017/06/22/233036
 ```
 
 # リリースノート
-### 2017/11/08 
+### 2017/11/08
 * 呟くRubyリファレンスマニュアルを`2.4.0`にバージョンアップしました。
 * 呟く対象のクラスに`IOクラス`を追加しました。
 ### 2018/02/03
 * 呟くRubyのversionを`2.5.0`にアップデートしました。
 ### 2018/02/25
 * るびまバックナンバー投稿機能を追加しました。
+### 2019/02/02
+* 呟くRubyのversionを`2.6.0`にアップデートしました。
