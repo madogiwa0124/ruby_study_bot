@@ -1,5 +1,5 @@
 require 'sinatra'
-require_relative 'tweet.rb'
+require_relative 'lib/tweet.rb'
 
 get '/' do
   'under construction'
