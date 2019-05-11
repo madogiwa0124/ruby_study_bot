@@ -1,9 +1,26 @@
 require_relative 'web_page_base'
+require 'csv'
+require 'net/http'
+require 'benchmark'
 
 class RubyReferenceManual < WebPageBase
   RUBY_VERSION = "2.6.0"
   MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
-  CLASS_LIST = [String, Numeric, Array, Hash, IO]
+  CLASS_LIST = [
+    String,
+    Numeric,
+    Array,
+    Hash,
+    IO,
+    Enumerable,
+    Proc,
+    Kernel,
+    DateTime,
+    Date,
+    Range,
+    CSV,
+    Benchmark
+  ]
 
   class << self
     def sample_target
@@ -11,7 +28,7 @@ class RubyReferenceManual < WebPageBase
       method = method_list(target_class).sample
       id = "#I_#{url_encode_text(method.to_s.upcase)}"
       {
-        class:  target_class,
+        class: target_class,
         method: method,
         manual: "#{MANUAL_URL}#{target_class}.html#{id}"
       }
