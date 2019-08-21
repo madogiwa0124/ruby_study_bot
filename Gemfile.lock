@@ -33,7 +33,7 @@ GEM
       ast (~> 2.4.0)
     public_suffix (3.1.1)
     rack (2.0.7)
-    rack-protection (2.0.5)
+    rack-protection (2.0.6)
       rack
     rainbow (3.0.0)
     rubocop (0.74.0)
@@ -45,10 +45,10 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
     simple_oauth (0.3.1)
-    sinatra (2.0.5)
+    sinatra (2.0.6)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.5)
+      rack-protection (= 2.0.6)
       tilt (~> 2.0)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -77,7 +77,7 @@ DEPENDENCIES
   minitest
   nokogiri
   rubocop
-  sinatra (= 2.0.5)
+  sinatra (= 2.0.6)
   timecop
   twitter (= 6.2.0)
 

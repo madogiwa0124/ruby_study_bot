@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.5.1'
 
-gem 'sinatra', '2.0.5'
+gem 'sinatra', '2.0.6'
 gem 'twitter', '6.2.0'
 gem 'dotenv'
 gem 'rubocop'
