@@ -19,7 +19,15 @@ class RubyReferenceManual < WebPageBase
     Date,
     Range,
     CSV,
-    Benchmark
+    Benchmark,
+    Kernel,
+    Fiber,
+    Thread,
+    TracePoint,
+    Comparable,
+    Process,
+    Signal,
+
   ]
 
   class << self

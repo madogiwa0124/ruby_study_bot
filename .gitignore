@@ -1,3 +1,6 @@
 make_access_token.rb
 .env
 .DS_Store
+vendor
+.ruby-version
+.bundle
