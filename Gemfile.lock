@@ -1,8 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
     buftok (0.2.0)
     domain_name (0.5.20190701)
@@ -26,12 +26,12 @@ GEM
     multipart-post (2.1.1)
     mustermann (1.0.3)
     naught (1.1.0)
-    nokogiri (1.10.5)
+    nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
-    parser (2.6.5.0)
+    parser (2.7.0.0)
       ast (~> 2.4.0)
-    public_suffix (3.1.1)
+    public_suffix (4.0.2)
     rack (2.0.8)
     rack-protection (2.0.7)
       rack
@@ -51,7 +51,7 @@ GEM
       rack-protection (= 2.0.7)
       tilt (~> 2.0)
     thread_safe (0.3.6)
-    tilt (2.0.9)
+    tilt (2.0.10)
     timecop (0.9.1)
     twitter (6.2.0)
       addressable (~> 2.3)
@@ -82,7 +82,7 @@ DEPENDENCIES
   twitter (= 6.2.0)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.7.0p0
 
 BUNDLED WITH
-   1.17.1
+   2.1.2
