@@ -5,7 +5,7 @@ class WebPageBase
   class << self
     def page_parsed_object(url)
       charset = nil
-      html = open(url) do |f|
+      html = URI.open(url) do |f|
         charset = f.charset
         f.read
       end
