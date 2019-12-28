@@ -77,9 +77,9 @@ DEPENDENCIES
   minitest
   nokogiri
   rubocop
-  sinatra (= 2.0.7)
+  sinatra
   timecop
-  twitter (= 6.2.0)
+  twitter
 
 RUBY VERSION
    ruby 2.7.0p0
