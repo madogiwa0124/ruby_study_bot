@@ -4,8 +4,8 @@ require 'net/http'
 require 'benchmark'
 
 class RubyReferenceManual < WebPageBase
-  RUBY_VERSION = "2.6.0"
-  MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/"
+  RUBY_VERSION = '2.7.0'.freeze
+  MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/".freeze
   CLASS_LIST = [
     String,
     Numeric,
@@ -27,14 +27,13 @@ class RubyReferenceManual < WebPageBase
     Comparable,
     Process,
     Signal,
-
   ]
 
   class << self
     def sample_target
       target_class = CLASS_LIST.sample
       method = method_list(target_class).sample
-      id = "#I_#{url_encode_text(method.to_s.upcase)}"
+      id = "#I_#{url_encode_text(method.to_s).upcase}"
       {
         class: target_class,
         method: method,
