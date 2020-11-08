@@ -9,7 +9,7 @@ class TweetTest < Minitest::Test
   end
 
   def test_ruby_magazine_text
-    Timecop.travel(Time.new(2018, 9, 15, 8))
+    Timecop.travel(Time.new(2018, 9, 15, 15))
     assert Tweet.new.text.match?(/本日のるびま/)
   end
 

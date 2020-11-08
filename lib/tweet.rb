@@ -26,8 +26,8 @@ class Tweet
     case DateTime.now.hour
     # AM7:00は、曜日毎のメッセージを投稿
     when 7 then create_week_text
-    # AM8:00は、るびまのバックナンバーを投稿
-    when 8 then create_ruby_magazine_text
+    # PM15:00は、るびまのバックナンバーを投稿
+    when 15 then create_ruby_magazine_text
     # クラス、メソッド、リファレンスマニュアルのページを投稿
     else create_class_method_text
     end
