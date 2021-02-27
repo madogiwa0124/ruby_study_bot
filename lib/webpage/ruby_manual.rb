@@ -4,7 +4,7 @@ require 'net/http'
 require 'benchmark'
 
 class RubyReferenceManual < WebPageBase
-  RUBY_VERSION = '2.7.0'.freeze
+  RUBY_VERSION = '3.0.0'.freeze
   MANUAL_URL = "https://docs.ruby-lang.org/ja/#{RUBY_VERSION}/class/".freeze
   CLASS_LIST = [
     String,
